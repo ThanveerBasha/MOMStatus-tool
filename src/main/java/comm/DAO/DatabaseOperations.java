@@ -136,4 +136,17 @@ public void updateTasks(TasksRetrieve taskretrieve) {
 		}
 	}
 	
+	public List<Map<String, Object>> getProjects() throws Exception {
+		try{
+			System.out.println("hsejf"); 
+			List<Map<String, Object>>  projects = jdbcTemplate.queryForList("select * from projects");
+			
+		return projects;
+		
+		}catch(Exception e){
+			
+			
+			throw e;
+		}
+	}
 }

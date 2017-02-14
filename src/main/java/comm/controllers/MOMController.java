@@ -1,39 +1,23 @@
 package comm.controllers;
 
-import java.sql.SQLException;
-
 import java.util.ArrayList;
-
 import java.util.List;
-
 import java.util.Map;
 
-
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.MediaType;
-
-import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
 import comm.DAO.DatabaseOperations;
-
 import comm.services.Services;
+import comm.utils.Projects;
 import comm.utils.Resources;
-
 import comm.utils.TasksRetrieve;
 import comm.utils.Utility;
 
@@ -58,6 +42,10 @@ public class MOMController {
 	@Autowired
 
 	TasksRetrieve taskretrieve;
+	
+	@Autowired
+
+	Projects projects;
 	
 
 	@RequestMapping(value = "/retrieveusers", method = RequestMethod.GET)
@@ -108,7 +96,6 @@ public class MOMController {
 	
 	
 	
-	//Added by kavitha for resource tasks
 	
 	
 	@RequestMapping(value = "/resourceTasks/{resourceid}", method = RequestMethod.GET)
@@ -215,6 +202,52 @@ public class MOMController {
 			System.out.println("exception occured"+e.getMessage());
 
 			//e.printStackTrace();
+
+		}
+
+		System.out.println("innn" + databaseOperations.checkJdbcTemplate());
+
+		// return "Hello " + name;
+
+		return "success";
+
+	}
+	
+	@RequestMapping(value = "/retrieveprojects", method = RequestMethod.GET)
+
+	public String retrieveprojects() {
+
+		// JSONObject resource;
+
+		// JSONArray resourceArray = new JSONArray();
+
+		// System.out.println("resourceArray" + resourceArray);
+
+		Projects projects = new Projects();
+
+		try {
+
+			System.out.println("hai");
+
+			List<Map<String, Object>> list = services.getProjects();
+			//System.out.println(resources);
+
+			List<Object> la = new ArrayList<Object>();
+
+			for (Map row1 : list) {
+
+				la.add(row1);
+
+			}
+
+			projects.setLa(la);
+			System.out.println(la);
+
+			return new Gson().toJson(projects);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
 
 		}
 

@@ -6,11 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import comm.DAO.DatabaseOperations;
+import comm.utils.Projects;
 import comm.utils.Resources;
 import comm.utils.TasksRetrieve;
 
@@ -21,6 +19,11 @@ public class Services {
 	
 	@Autowired
 	DatabaseOperations databaseOperations;
+	
+	@Autowired
+	Projects projects;
+	
+
 
 	public void insertResourceData() {
 
@@ -101,6 +104,24 @@ public class Services {
 			throw e;
 
 		}
+	}
+	
+public List<Map<String, Object>> getProjects() throws Exception {
+		
+		// System.out.println(databaseOperations);
+		List<Map<String, Object>> projects;
+		try {
+			System.out.println("wh");
+			projects = databaseOperations.getResources();
+			
+			return projects;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw e;
+
+		}
+
 	}
 	
 	
