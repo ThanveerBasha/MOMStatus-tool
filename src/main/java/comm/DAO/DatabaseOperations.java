@@ -36,7 +36,7 @@ public class DatabaseOperations {
 	}
 	
 	
-	public List<Map<String, Object>> getResources() throws SQLException {
+	public List<Map<String, Object>> getResources() throws Exception {
 		try{
 			System.out.println("hsejf"); 
 			List<Map<String, Object>>  resources = jdbcTemplate.queryForList("select * from resources");
@@ -101,7 +101,7 @@ public void updateTasks(TasksRetrieve taskretrieve) {
 		}
 
 	}
-	public List<Map<String, Object>> getTasks() throws SQLException {
+	public List<Map<String, Object>> getTasks() throws Exception {
 		try{
 			System.out.println("arda");
 			List<Map<String, Object>>  tasks = jdbcTemplate.queryForList("select * from tasksretrieve");
@@ -116,7 +116,7 @@ public void updateTasks(TasksRetrieve taskretrieve) {
 	}
 	
 	
-	public List<Map<String, Object>> getTasks(String id) throws SQLException {
+	public List<Map<String, Object>> getTasks(String id) throws Exception {
 		try{
 			List<Map<String, Object>>  tasks =null;
 			System.out.println(id);
