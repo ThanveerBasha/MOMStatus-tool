@@ -198,8 +198,7 @@ public class MOMController {
 			return new Gson().toJson(taskretrieve);
 
 		} catch (Exception e) {
-			Utility.sendGrid(e,this.getClass().getName(),new Object(){}.getClass().getEnclosingMethod().getName());
-			System.out.println("exception occured"+e.getMessage());
+			
 
 			//e.printStackTrace();
 
