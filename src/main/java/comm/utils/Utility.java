@@ -16,7 +16,7 @@ public class Utility {
 
 //SendGrid sendgrid = new SendGrid("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");
 
-             SendGrid sendgrid = new SendGrid("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");
+             SendGrid sendgrid = new SendGrid("sendgrid key");
 
 SendGrid.Email welcomeMail = new SendGrid.Email();
 
